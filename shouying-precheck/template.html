@@ -1,0 +1,107 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<title>首营预审报告 · {供货商全称}</title>
+<style>
+body{font-family:"Microsoft YaHei",sans-serif;max-width:900px;margin:24px auto;padding:0 16px;color:#222;line-height:1.65}
+h1{font-size:20px;border-bottom:3px solid #c00;padding-bottom:8px;margin-bottom:4px}
+.fp{background:#f4f4f4;border:1px dashed #bbb;padding:6px 10px;font-size:12.5px;color:#444;font-family:Consolas,monospace;border-radius:6px;margin-bottom:8px}
+.meta{color:#555;font-size:13px}
+.banner{padding:12px 16px;border-radius:8px;font-weight:bold;font-size:15.5px;margin:12px 0}
+.red{background:#fdecea;color:#b71c1c;border:1px solid #f5c6cb}
+.green{background:#e8f5e9;color:#1b5e20;border:1px solid #c8e6c9}
+.amber{background:#fff8e1;color:#7a4b00;border:1px solid #ffe082}
+h2{font-size:16px;background:#f5f5f5;padding:6px 10px;border-left:4px solid #c00;margin-top:26px}
+h3{font-size:14.5px;margin:18px 0 6px;color:#333}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+th,td{border:1px solid #ddd;padding:5px 7px;text-align:left;vertical-align:top}
+th{background:#fafafa}
+.ok{color:#2e7d32}.warn{color:#e65100}.bad{color:#b71c1c}.q{color:#1565c0}
+.copybtn{padding:8px 14px;background:#c00;color:#fff;border:0;border-radius:6px;cursor:pointer;margin:8px 0;font-size:14px}
+pre#buLiao{background:#f7f7f7;padding:12px;border:1px solid #ddd;border-radius:6px;white-space:pre-wrap;font-size:13px;line-height:1.6}
+.foot{color:#777;font-size:12.5px;margin-top:24px;border-top:1px solid #eee;padding-top:8px;font-family:Consolas,monospace}
+.note{font-size:12.5px;color:#555;background:#f9f9f9;border:1px dashed #ddd;padding:9px;border-radius:6px}
+ol,ul{padding-left:22px;font-size:13.5px}
+li{margin:4px 0}
+</style></head><body>
+
+<div class="fp">本次运行：技能v{技能版本}｜规则v{规则版本}｜{日期}｜资料包指纹sha256前8位:{本包实算，算不出写"未算"}｜OCR覆盖 {n}/{N} 页（零输出 {m} 页）</div>
+<h1>━━━ 首营预审报告 · {供货商全称} ━━━</h1>
+<div class="meta">日期：{日期}　范围：{范围}　属性：{品类·生产/批发}<br>
+本包为电子件，纸质盖章件按贵司制度限期补（PROC-2 / PROC-3）。{仅企业包删此行}<br>
+{范围含品种时：企业资料不在本包，另行预审。}{范围含企业时：企业资料见本报告第三节。}<br>
+采购确认供货商：{供货商全称}{包内未见其资料/已随包提供}</div>
+
+<div class="banner red">【结论】合计缺 {X} + 补件 {Y} = <b>{Z} 项</b>（＝ 补料清单条数）—— 暂不建议提交质管。<br>
+最要紧：① {最要紧1} ② {最要紧2} ③ {最要紧3}</div>
+<!-- 资料齐全时：整段换为 <div class="banner green">【结论】资料齐全，建议提交质管复核。</div> -->
+<!-- 品种命中禁售时：结论行前加 🔴 品种「XX」属网售禁售清单（BAN-X），不能经营，请勿推进 -->
+<p class="note">禁售闸：{每个品种一行：🟢/🔴 品种——结论}（非药品品种跳过）</p>
+
+<h2>一、品种归属表</h2>
+<table>
+<tr><th>品种/SKU</th><th>码（码型 + 数字）</th><th>注册证（效期）</th><th>注册人/生产厂</th><th>与供货商关系</th></tr>
+<tr><td>{品种}{规格}</td><td>{EAN-13 xxx／Code128 xxx／QR／❓未读出／未提供（CHK-8未执行）}</td><td>{证号（效期）}</td><td>{公司}</td><td>{关系/⚠️}</td></tr>
+</table>
+<p class="note">码/证号为 AI 识别，建档前以实物或官方数据库为准。</p>
+<p class="note">{组合装说明/未触发V-BUNDLE说明}</p>
+
+<h2>二、品种资料逐项</h2>
+<h3>— {品种名}（{规格}）</h3>
+<table>
+<tr><th>状态</th><th>检查项</th><th>结果与文件</th></tr>
+<tr><td><span class="ok">✅</span></td><td>{检查项（规则ID）}</td><td>{结果与文件号}</td></tr>
+<tr><td><span class="warn">⚠️</span></td><td>{检查项}</td><td>{结果}</td></tr>
+<tr><td><span class="bad">❌</span></td><td>{检查项}</td><td>{结果}</td></tr>
+<tr><td><span class="q">❓</span></td><td>{检查项}</td><td>{结果}</td></tr>
+</table>
+<!-- 每个品种一组 h3+table；包装样稿逐份列：文件→规格→码→对齐结果（CHK-7/CHK-8） -->
+
+<h2>三、企业资料逐项</h2>
+<table>
+<tr><th>状态</th><th>检查项</th><th>结果与文件</th></tr>
+<tr><td><span class="ok">✅</span></td><td>G1 营业执照＋上一年度年报</td><td>{结果}</td></tr>
+<!-- G1-G7 + C-P/C-W/C-Q 逐项；仅品种范围时本节只留一行 note：企业资料不在本包，另行预审 -->
+</table>
+
+<h2>四、跨文件核对表</h2>
+<table>
+<tr><th>核对项</th><th>结果</th></tr>
+<tr><td>① 受托/委托生产备案期限 vs 注册证效期</td><td>{覆盖/断档/不适用——写明两边数值}</td></tr>
+<tr><td>② 包装·说明书名称/规格/文号 vs 注册证·许可证现行证载</td><td>{一致/不一致（写明哪项）}</td></tr>
+<tr><td>③ 检验报告型号＋年份 vs 本品种口径</td><td>{符合/待质管采信}</td></tr>
+<tr><td>④ 证照效期（先取现行版再比今天，含3个月临期）</td><td>{全部在效/临期项}</td></tr>
+</table>
+
+<h2>五、补料清单（对外转发块——只发这一块，不发展示报告）</h2>
+<button class="copybtn" onclick="navigator.clipboard.writeText(document.getElementById('buLiao').innerText)">📋 一键复制</button>
+<pre id="buLiao">【首营资料补齐清单】致 {供货商}（{品类} · {范围}）：
+本清单依据首营资料管理要求（GSP 及我司首营管理制度），对贵司提交的 {N} 份文件逐份登记核对后生成。
+
+一、未收到的资料（逐份核对后确认未见，请补充）：
+1. [关键] {资料名}：{硬要求}。（{规则ID}）
+{连续编号；❌缺失类全在本段}
+
+二、已收到、但需更正或补充内容的资料（如对判定有疑问，请联系我司质量部门核实）：
+1. {资料名}：{哪里需要更正/补充}。（{规则ID}）
+{⚠️判定类全在本段，条数并入合计Z}
+
+另请一并书面确认：{拟建商品69码确认等}</pre>
+
+<h2>六、内部确认（采购/质管拍板，不发供应商）</h2>
+<ol>
+<li>{内部确认项}</li>
+<li>❓待核验卡片：查询词「{证号/企业名}」→ {查询口名称+URL}｜结果：{已试查结果/未查（无工具）}</li>
+</ol>
+
+<h2>七、盲区与未覆盖（❓人工必核）</h2>
+<ol>
+<li>{看不清类❓：文件名+看不清的字段；多源读数不一致项；未提供文件不作任何合规推定}</li>
+</ol>
+<p class="note">盲区（读不出）≠缺失（没有）。本节文件不作任何合规推定，也不据此列补件（PROC-8）。</p>
+
+<h2>八、依据</h2>
+<p class="note">· {规则ID} {规则名} —— {依据/口径说明}<br>
+· {逐条列出}</p>
+
+<div class="foot">[预审登记] {日期}|{供货商全称}|{品类·生产/批发}|{范围}|缺{N}⚠️{M}❓看不清{K1}❓待核验{K2}盲区文件{B}<br>
+—— 预审结果仅供参考，最终以质量管理部门审核为准。</div>
+</body></html>

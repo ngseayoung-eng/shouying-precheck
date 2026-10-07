@@ -1,0 +1,5 @@
+# 运行时产物不进仓库
+首营预审报告_*.html
+*.log
+.DS_Store
+Thumbs.db
